@@ -12,6 +12,6 @@
         "dest": "app.py"
       }
     ],
-   "postInstall": "pip install surprise scikit-surprise --no-deps"
+    "installCommand": "pip install -r requirements.txt surprise scikit-surprise --no-deps"
   }
   
