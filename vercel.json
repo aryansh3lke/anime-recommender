@@ -11,6 +11,7 @@
         "src": "/(.*)",
         "dest": "app.py"
       }
-    ]
+    ],
+    "buildCommand": "pip install --no-deps -r requirements.txt"
   }
   
