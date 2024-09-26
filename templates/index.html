@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Recommender</title>
+
+  <!-- Quick Start: CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <h1 style="margin: 25px; text-align: center;">Anime Recommender</h1>
+  <div style="display: flex; width: 100%; justify-content: center; padding: 25px; ">
+    <div class="login" style="padding: 25px; text-align: left; width: 50%;">
+      <h2>KNN Model</h2>
+          <!-- Inputs for our ML model -->
+          <form action="{{ url_for('predict')}}" method="post">
+            <div class="form-group">
+              <label for="anime_name_knn">Enter the name your favorite anime you have watched to receive recommendations:</label>
+              <input type="text" class="form-control" name="anime_name_knn" placeholder="Cowboy Bebop" required="required" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-large mt-1">Recommend Animes!</button>
+          </form>
+        <br>
+        <br>
+        <pre>{{ prediction_knn }}</pre>
+        <pre style="color: red;">{{ knn_error }}</pre>
+    </div>
+
+    <div class="login" style="padding: 25px; text-align: left; width: 50%;">
+      <h2>SVD Model</h2>
+      <p></p>
+      <form action="{{ url_for('predict2')}}" method="post">
+        <div class="form-group">
+          <!-- <input type="text" name="anime_name_svd" placeholder="Cowboy Bebop" required="required" /> -->
+          <label for="anime_name_svd">Enter as many animes and your ratings for them (out of 10) with the format shown below to receive recommendations:</label>
+          <textarea class="form-control" rows="5" cols="50" name="anime_name_svd" 
+            placeholder="Toradora! \ 9&#10;Clannad \ 10&#10;Your Lie In April \ 10&#10;Rascal Does Not Dream of Bunny Girl Senpai \ 9&#10;Horimiya \ 9&#10;Gintama \ 5" 
+            required="required"  style="display: block;">{{svd_input}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-large mt-1">Recommend Animes!</button>
+      </form>
+
+      <br>
+      <br>
+      <pre>{{ prediction_svd }}</pre>
+      <pre style="color: red; text-wrap: wrap;">{{ svd_error }}</pre>
+    </div>
+  </div>
+</body>
+
+</html>
