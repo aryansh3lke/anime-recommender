@@ -1,3 +1,4 @@
 Flask==3.0.3
-pandas<2
+numpy<2
+pandas==2.2.3
 surprise==0.1
