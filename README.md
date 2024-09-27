@@ -1,6 +1,6 @@
 ﻿# Anime Recommender
 
-A collaborative filtering based recommendation systems project to recommend animes to users. Test out the models here: [animerecom.com](animerecom.com)
+A collaborative filtering recommender systems project to recommend animes to users. Test out the models here: [animerecom.com](animerecom.com)
 
 ## Table of Contents
 
