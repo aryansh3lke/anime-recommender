@@ -2,8 +2,12 @@ from flask import Flask, request, render_template
 import pandas as pd
 import pickle
 import projutils
+from dotenv import load_dotenv
+from os import getenv
+from waitress import serve
 
 app = Flask(__name__)
+load_dotenv()
 
 # Load models
 knn_model = pickle.load(open('models/knn_model.pkl','rb'))
@@ -107,5 +111,10 @@ def predict2():
         return render_template('index.html', svd_error=f'Model Error: Something went wrong with model fitting', svd_input=user_profile_string)
 #endregion
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+if __name__ == "__main__":
+    # development
+    if getenv('FLASK_DEBUG', False):
+        app.run(host="0.0.0.0", port=8000, debug=True)
+    # production
+    else:
+        serve(app, host="0.0.0.0", port=8000)
