@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import pandas as pd
 import pickle
 import projutils
@@ -16,6 +16,8 @@ svd_model = pickle.load(open('models/svd_model.pkl','rb'))
 rid_to_name, name_to_rid = projutils.read_item_names()
 RECOMMENDATION_COUNT = 10
 
+# Load anime list:
+anime_list = projutils.read_anime_list()
 # Load anime scores:
 anime_scores_df = pd.read_csv('data/anime.csv', index_col='MAL_ID', usecols=['MAL_ID', 'Name', 'Score'])
 
@@ -109,6 +111,14 @@ def predict2():
     except Exception as exc:
         print(exc)
         return render_template('index.html', svd_error=f'Model Error: Something went wrong with model fitting', svd_input=user_profile_string)
+#endregion
+
+#region Anime Suggestions Route
+@app.route('/get_anime_suggestions')
+def get_anime_suggestions():
+    query = request.args.get('q', '')
+    suggestions = [anime for anime in anime_list if anime.lower().startswith(query.lower())]
+    return jsonify(suggestions), 200
 #endregion
 
 if __name__ == "__main__":

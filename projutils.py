@@ -66,3 +66,20 @@ def get_top_n_string(predictions, n, rid_to_name):
         ranking += 1
     
     return display_string
+
+def read_anime_list():
+    file_name = "data/id_to_name.csv"
+    anime_list = []
+    
+    with open(file_name, encoding="ISO-8859-1") as f:
+        # skip header line
+        next(f)
+        for line in f:
+            line = line.rstrip()
+            line = line.split(",")
+            anime_list.append(line[1])
+            
+            # english name
+            anime_list.append(line[2])
+
+    return anime_list

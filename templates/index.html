@@ -16,9 +16,10 @@
       <h2>KNN Model</h2>
           <!-- Inputs for our ML model -->
           <form action="{{ url_for('predict')}}" method="post">
-            <div class="form-group">
-              <label for="anime_name_knn">Enter the name your favorite anime you have watched to receive recommendations:</label>
-              <input type="text" class="form-control" name="anime_name_knn" placeholder="Cowboy Bebop" required="required" />
+            <div class="form-group position-relative">
+              <label for="anime_name_knn">Enter the name of your favorite anime you have watched to receive recommendations:</label>
+              <input type="text" class="form-control" name="anime_name_knn" id="anime_name_knn" placeholder="Cowboy Bebop" required="required" autocomplete="off"/>
+              <div id="anime_list" class="dropdown-menu w-100"></div>
             </div>
             <button type="submit" class="btn btn-primary btn-block btn-large mt-1">Recommend Animes!</button>
           </form>
@@ -48,6 +49,39 @@
       <pre style="color: red; text-wrap: wrap;">{{ svd_error }}</pre>
     </div>
   </div>
+
+  <script>
+    document.getElementById('anime_name_knn').addEventListener('input', function() {
+      const query = this.value;
+      const dropdown = document.getElementById('anime_list');
+      
+      if (query.length < 1) {
+        dropdown.style.display = 'none';
+        return;
+      }
+
+      fetch(`/get_anime_suggestions?q=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          dropdown.innerHTML = ''; // Clear previous suggestions
+          if (data.length > 0) {
+            data.forEach(anime => {
+              const div = document.createElement('div');
+              div.classList.add('cursor-pointer');
+              div.textContent = anime;
+              div.addEventListener('click', function() {
+                document.getElementById('anime_name_knn').value = anime;
+                dropdown.style.display = 'none';
+              });
+              dropdown.appendChild(div);
+            });
+            dropdown.style.display = 'block';
+          } else {
+            dropdown.style.display = 'none';
+          }
+        });
+    });
+  </script>
 </body>
 
 </html>
