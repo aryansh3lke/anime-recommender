@@ -46,11 +46,3 @@ Follow these steps to set up the project locally:
 #### 4. View the website locally
 
 http://127.0.0.1:5000
-
-## Contact
-
-Aryan Shelke
-
-Email: aryan.shelke.2003.@gmail.com
-
-LinkedIn: [linkedin.com/in/aryanshelke](linkedin.com/in/aryanshelke)
