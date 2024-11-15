@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "bundle": "ANALYZE=true npm run build"
+    "analyze": "ANALYZE=true pnpm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
