@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AnimeCard from "./AnimeCard";
 import { Recommendation } from "@/types/interfaces";
-import { Button } from "@nextui-org/button";
+import { Button } from "@nextui-org/react";
 import SkeletonCard from "./SkeletonCard";
 
 export default function AnimeCardList({
