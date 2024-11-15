@@ -35,7 +35,7 @@ export default function NavigationBar() {
           height={40}
         />
         <p className="text-2xl font-bold text-black dark:text-white sm:text-4xl">
-          AnimeRecomAI
+          AnimeRecsAI
         </p>
       </NavbarBrand>
 
