@@ -36,7 +36,7 @@ export default function InputBar({ handleSubmit }: { handleSubmit: Function }) {
       console.log(NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL);
       fetch(
         NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL +
-          `/api/python/get_myanimelist_suggestions?input_anime=${inputAnime}`,
+          `/api/get_myanimelist_suggestions?input_anime=${inputAnime}`,
       )
         .then((response) =>
           response

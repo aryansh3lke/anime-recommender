@@ -18,7 +18,7 @@ export default function MALRecommender() {
   async function recommendMAL(anime_name: string) {
     fetch(
       NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL +
-        `/api/python/get_myanimelist_recommendations?anime_name=${encodeURIComponent(anime_name)}`,
+        `/api/get_myanimelist_recommendations?anime_name=${encodeURIComponent(anime_name)}`,
     )
       .then((response) =>
         response
