@@ -7,6 +7,7 @@ import RecommendationList from "./RecommendationList";
 import RecommendationHeader from "./RecommendationHeader";
 import SortSettingBar from "./SortSettingBar";
 import Image from "next/image";
+import NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL from "../proxy";
 
 export default function MALRecommender() {
   const [key, setKey] = useState<number>(0);
@@ -16,7 +17,8 @@ export default function MALRecommender() {
 
   async function recommendMAL(anime_name: string) {
     fetch(
-      `/api/python/get_myanimelist_recommendations?anime_name=${encodeURIComponent(anime_name)}`,
+      NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL +
+        `/api/python/get_myanimelist_recommendations?anime_name=${encodeURIComponent(anime_name)}`,
     )
       .then((response) =>
         response

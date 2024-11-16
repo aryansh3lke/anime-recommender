@@ -9,6 +9,8 @@ import {
   Button,
 } from "@nextui-org/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL from "../proxy";
+
 export default function InputBar({ handleSubmit }: { handleSubmit: Function }) {
   const [inputAnime, setInputAnime] = useState<string>("");
   const [selectedAnime, setSelectedAnime] = useState<string>("");
@@ -31,7 +33,11 @@ export default function InputBar({ handleSubmit }: { handleSubmit: Function }) {
 
   const loadAnimeSuggestions = async () => {
     if (inputAnime.length > 0 && inputAnime !== selectedAnime) {
-      fetch(`/api/python/get_myanimelist_suggestions?input_anime=${inputAnime}`)
+      console.log(NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL);
+      fetch(
+        NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL +
+          `/api/python/get_myanimelist_suggestions?input_anime=${inputAnime}`,
+      )
         .then((response) =>
           response
             .json()

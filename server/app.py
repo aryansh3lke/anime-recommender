@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, jsonify, Blueprint
+from flask_cors import CORS
 import logging
 import pandas as pd
 import pickle
@@ -9,6 +10,7 @@ import urllib.parse
 from waitress import serve
 
 app = Flask(__name__)
+CORS(app)
 load_dotenv()
 
 # Custom logging filter to filter out logs for the specific endpoint
