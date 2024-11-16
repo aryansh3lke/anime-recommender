@@ -19,7 +19,7 @@
     "@types/react-dom": "18.2.4",
     "eslint": "^8.57.1",
     "eslint-config-next": "13.4.2",
-    "framer-motion": "^11.11.10",
+    "framer-motion": "^11.11.17",
     "next": "13.4.3",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
