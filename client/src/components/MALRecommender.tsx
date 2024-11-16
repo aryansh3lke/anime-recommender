@@ -40,10 +40,10 @@ export default function MALRecommender() {
 
   return (
     <div className="flex min-h-screen flex-col items-center">
-      <h1 className="mb-5 mt-5 text-center text-2xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl lg:text-6xl">
+      <h1 className="mb-5 text-center text-4xl font-bold text-black dark:text-white sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl">
         MyAnimeList Recommender
       </h1>
-      <p className="mb-10 text-center text-small text-black dark:text-white sm:text-large md:text-xl lg:text-2xl">
+      <p className="mb-10 text-center text-small text-black dark:text-white max-sm:mx-5 sm:text-large md:text-xl lg:text-2xl">
         Receive recommendations directly from MyAnimeList users
       </p>
       <InputBar handleSubmit={recommendMAL} />
