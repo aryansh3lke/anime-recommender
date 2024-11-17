@@ -1,4 +1,4 @@
-# Anime Recommender
+# AnimeRecsAI
 
 A machine learning recommender systems app to recommend the best animes to anime fans. Receive your recommendations here: [animerecom.com](animerecom.com)
 
