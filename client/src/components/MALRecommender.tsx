@@ -6,8 +6,8 @@ import InputBar from "./InputBar";
 import RecommendationList from "./RecommendationList";
 import RecommendationHeader from "./RecommendationHeader";
 import SortSettingBar from "./SortSettingBar";
-import Image from "next/image";
 import NEXT_PUBLIC_FLASK_BACKEND_PROXY_URL from "../proxy";
+import MissingRecommendations from "./MissingRecommendations";
 
 export default function MALRecommender() {
   const [key, setKey] = useState<number>(0);
@@ -54,17 +54,7 @@ export default function MALRecommender() {
           className="flex flex-col items-center justify-center px-10"
         >
           {recommendations.length === 0 ? (
-            <div className="mt-10 flex animate-jump flex-col items-center justify-center">
-              <p className="mb-5 mt-10 text-3xl font-bold text-black dark:text-white">
-                No recommendations found
-              </p>
-              <Image
-                src={"/missing-recommendations.png"}
-                alt="No recommendations found"
-                width="300"
-                height="300"
-              />
-            </div>
+            <MissingRecommendations />
           ) : (
             <>
               <RecommendationHeader anime={anime} />
