@@ -5,6 +5,7 @@ import { Anime } from "@/lib/types/interfaces";
 import Image from "next/image";
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import CardButtons from "@/components/recommendations/CardButtons";
+import { useState } from "react";
 
 export default function AnimeCard({
   anime,
@@ -19,6 +20,8 @@ export default function AnimeCard({
   isRemoving: boolean;
   isWatchlist?: boolean;
 }) {
+  const [imgSrc, setImgSrc] = useState<string>(anime.image);
+
   // Get appropriate score coloring based on which range it falls in
   const getScoreColorClass = (score: number) => {
     if (score >= 8) {
@@ -56,8 +59,8 @@ export default function AnimeCard({
             height={300}
             alt={anime.name}
             className="aspect-square w-full rounded-b-none object-cover shadow-sm"
-            src={anime.image}
-            priority={false}
+            src={imgSrc}
+            onError={() => setImgSrc("/missing-image-placeholder.svg")}
           />
         </CardBody>
         <CardFooter className="m-flex flex-col px-4">

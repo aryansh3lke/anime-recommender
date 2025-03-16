@@ -29,7 +29,7 @@ export default function CardButtons({
   const launchColoring = "bg-blue-600 dark:bg-cyan-500 transition-none";
 
   return (
-    <div className="z-2 absolute right-2 top-2 flex flex-row items-center justify-center gap-2 transition-none">
+    <div className="absolute right-2 top-2 z-10 flex flex-row items-center justify-center gap-2 transition-none">
       {!isWatchlist && handleAdd && (
         <Button
           isIconOnly
