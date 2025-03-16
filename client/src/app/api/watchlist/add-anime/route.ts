@@ -1,11 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
+import { NextResponse } from "next/server";
 
 export async function PATCH(request: Request) {
   // Check if user is logged in
   const session = await auth();
   if (!session) {
-    return Response.json(
+    return NextResponse.json(
       { error: "You must be logged in to add an anime to your watchlist" },
       { status: 401 },
     );
@@ -17,7 +18,7 @@ export async function PATCH(request: Request) {
   });
 
   if (!user) {
-    return Response.json({ error: "User not found" }, { status: 404 });
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
   // Get anime from request body
@@ -25,7 +26,7 @@ export async function PATCH(request: Request) {
 
   // Check if anime is already in watchlist
   if (user.watchlist.some((item: any) => item.name === anime.name)) {
-    return Response.json(
+    return NextResponse.json(
       { error: "Anime already in watchlist" },
       { status: 400 },
     );
@@ -42,13 +43,13 @@ export async function PATCH(request: Request) {
       },
     });
   } catch (error) {
-    return Response.json(
+    return NextResponse.json(
       { error: "Failed to add anime to watchlist" },
       { status: 500 },
     );
   }
 
-  return Response.json(
+  return NextResponse.json(
     { message: "Anime added to watchlist" },
     { status: 200 },
   );

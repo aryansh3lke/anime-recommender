@@ -1,13 +1,13 @@
-import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { Anime } from "@/lib/types/interfaces";
+import { auth } from "@/auth";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   // Check if user is logged in
   const session = await auth();
   if (!session) {
-    return Response.json(
-      { error: "You must be logged in to add an anime to your watchlist" },
+    return NextResponse.json(
+      { error: "You must be logged in to view your watchlist" },
       { status: 401 },
     );
   }
@@ -17,15 +17,14 @@ export async function GET() {
     where: { id: session.user.id },
   });
 
-  // Check if user exists
   if (!user) {
-    return Response.json({ error: "User not found" }, { status: 404 });
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
   if (!user.watchlist) {
-    return Response.json({ error: "Watchlist not found" }, { status: 404 });
+    return NextResponse.json({ error: "Watchlist not found" }, { status: 404 });
   }
 
-  // Return the watchlist directly since it's already stored as Anime objects
-  return Response.json(user.watchlist, { status: 200 });
+  // Return watchlist
+  return NextResponse.json(user.watchlist, { status: 200 });
 }
