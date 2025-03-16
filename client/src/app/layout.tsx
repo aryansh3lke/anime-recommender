@@ -1,13 +1,12 @@
-import "../styles/globals.css";
 import { Inter } from "next/font/google";
+import "@/styles/globals.css";
 import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "AnimeRecsAI",
-  description:
-    "Get the most popular anime recommendations based on your favorite animes.",
+  title: "Anime Recommender",
+  description: "Get personalized anime recommendations",
 };
 
 export default function RootLayout({
@@ -16,9 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" className="light" suppressHydrationWarning>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="min-h-screen bg-white dark:bg-gray-800">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

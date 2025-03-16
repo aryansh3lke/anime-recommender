@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import NextUI styles */
-/* @import "@nextui-org/react/dist/nextui.css"; */
+html,
+body,
+:root {
+  height: 100%;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
