@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
 import OpenAuthButtons from "@/components/auth/OpenAuthButtons";
 
 export default async function SignInPage(props: {
-  searchParams: { error?: string };
+  searchParams: Promise<{ error?: string }>;
 }) {
   const searchParams = await props.searchParams;
 
