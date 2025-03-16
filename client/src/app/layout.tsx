@@ -5,8 +5,9 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Anime Recommender",
-  description: "Get personalized anime recommendations",
+  title: "AnimeRecsAI",
+  description:
+    "Get the best anime recommendations based on your favorite animes",
 };
 
 export default function RootLayout({
