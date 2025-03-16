@@ -1,15 +1,21 @@
-// app/providers.tsx
 "use client";
 
-import {NextUIProvider} from '@nextui-org/react'
-import {ThemeProvider as NextThemesProvider} from "next-themes";
+import { HeroUIProvider } from "@heroui/react";
+import { ThemeProvider } from "next-themes";
+import { SessionProvider } from "next-auth/react";
 
-export function Providers({children}: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <NextUIProvider>
-      <NextThemesProvider attribute="class" defaultTheme="dark">
-        {children}
-      </NextThemesProvider>
-    </NextUIProvider>
-  )
+    <SessionProvider>
+      <HeroUIProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          themes={["light", "dark"]}
+        >
+          {children}
+        </ThemeProvider>
+      </HeroUIProvider>
+    </SessionProvider>
+  );
 }
