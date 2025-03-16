@@ -13,10 +13,10 @@ export default function GithubButton({ size = "md" }: { size?: "sm" | "md" }) {
       size={size}
     >
       <Image
-        src={`/icons/github.svg`}
+        src={`/icons/lucide-github.svg`}
         alt="GitHub"
-        width="25"
-        height="25"
+        width="20"
+        height="20"
         className="[filter:invert(45%)_sepia(83%)_saturate(2849%)_hue-rotate(335deg)_brightness(98%)_contrast(96%)]"
       />
     </Button>
