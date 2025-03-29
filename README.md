@@ -25,8 +25,8 @@ Users can build their own personal watchlist by adding the recommendations after
 
 ### Backend
 
-<b>Framework:</b> [Flask (Python)](https://flask.palletsprojects.com/en/stable)
-<b>ORM:</b> [Prisma](https://www.prisma.io)
+<b>Framework:</b> [Flask (Python)](https://flask.palletsprojects.com/en/stable)\
+<b>ORM:</b> [Prisma](https://www.prisma.io)\
 <b>Database:</b> [Neon Postgres](https://neon.tech)
 
 ### DevOps
